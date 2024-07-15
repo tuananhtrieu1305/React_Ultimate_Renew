@@ -1,38 +1,22 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import MyFunction from "./components/learn/MyFunction";
-import { SecondComponent } from "./components/learn/SecondComponent";
+// import LostImage from "../src/assets/react.svg";
+import "./components/Todo/todo.css";
+import TodoList from "./components/Todo/TodoList";
+import TodoNew from "./components/Todo/TodoNew";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
+  const data = {
+    task: "Watching YT",
+    time: "8:00 pm",
+  };
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Hello World React JS</h1>
-      <MyFunction />
-      <SecondComponent />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="wrapper">
+      <h1 className="heading">Todo List</h1>
+      <TodoNew />
+      {/* <figure>
+        <img src={LostImage} alt="" />
+      </figure> */}
+      <TodoList data={data} />
+    </div>
   );
 };
 

@@ -8,10 +8,13 @@ const App = () => {
     task: "Watching YT",
     time: "8:00 pm",
   };
+  const AddNewData = (name) => {
+    alert(`execute ${name}`);
+  };
   return (
     <div className="wrapper">
       <h1 className="heading">Todo List</h1>
-      <TodoNew />
+      <TodoNew AddNewData={AddNewData} />
       {/* <figure>
         <img src={LostImage} alt="" />
       </figure> */}

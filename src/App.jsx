@@ -21,12 +21,18 @@ const App = () => {
     };
     setData([...data, newData]);
   };
+
+  const handleDeleteData = (id) => {
+    const todoList = data.filter((item) => item.id !== id);
+    setData(todoList);
+  };
+
   return (
     <div className="wrapper">
       <h1 className="heading">Todo List</h1>
       <TodoNew AddNewData={AddNewData} />
       {data.length > 0 ? (
-        <TodoList data={data} />
+        <TodoList data={data} handleDeleteData={handleDeleteData} />
       ) : (
         <figure>
           <img src={LostImage} alt="" />

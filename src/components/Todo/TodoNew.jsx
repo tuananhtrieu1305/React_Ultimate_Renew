@@ -7,6 +7,10 @@ const TodoNew = (props) => {
   const handleOnChange = (name) => {
     setInputValue(name);
   };
+  const handleClickAddBtn = () => {
+    AddNewData(inputValue);
+    setInputValue("");
+  };
   return (
     <div className="search-bar">
       <input
@@ -15,8 +19,13 @@ const TodoNew = (props) => {
         placeholder="Enter task"
         value={inputValue}
         onChange={(event) => handleOnChange(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleClickAddBtn();
+          }
+        }}
       />
-      <button className="add-btn" onClick={() => AddNewData(inputValue)}>
+      <button className="add-btn" onClick={handleClickAddBtn}>
         Add
       </button>
     </div>

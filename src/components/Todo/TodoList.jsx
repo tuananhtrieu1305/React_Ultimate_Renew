@@ -1,5 +1,10 @@
 const TodoList = (props) => {
-  const { data } = props;
+  const { data, handleDeleteData } = props;
+
+  const handleClickDeleteBtn = (id) => {
+    handleDeleteData(id);
+  };
+
   return (
     <>
       <div className="task-list">
@@ -8,7 +13,10 @@ const TodoList = (props) => {
             <div className="task-item" key={item.id}>
               <p className="task-name">{item.task}</p>
               <div className="icons">
-                <div className="delete-icon icon">
+                <div
+                  className="delete-icon icon"
+                  onClick={() => handleClickDeleteBtn(item.id)}
+                >
                   <ion-icon name="trash-outline"></ion-icon>
                 </div>
                 <div className="update-icon icon">

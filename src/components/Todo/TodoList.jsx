@@ -1,10 +1,10 @@
 const TodoList = (props) => {
-  const { data } = props;
+  const { data, setData } = props;
   return (
     <>
       <div className="task-list">
         <div className="task-item">
-          <p className="task-name">{data.task}</p>
+          <p className="task-name">{JSON.stringify(data)}</p>
           <div className="icons">
             <div className="delete-icon icon">
               <ion-icon name="trash-outline"></ion-icon>

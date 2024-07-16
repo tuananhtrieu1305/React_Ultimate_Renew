@@ -9,8 +9,17 @@ const App = () => {
     { id: 1, task: "Watching YT" },
     { id: 2, task: "Learning English" },
   ]);
+
+  const randomNumb = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
   const AddNewData = (name) => {
-    alert(`execute ${name}`);
+    const newData = {
+      id: randomNumb(3, 200),
+      task: name,
+    };
+    setData([...data, newData]);
   };
   return (
     <div className="wrapper">
@@ -19,7 +28,7 @@ const App = () => {
       {/* <figure>
         <img src={LostImage} alt="" />
       </figure> */}
-      <TodoList data={data} setData={setData} />
+      <TodoList data={data} />
     </div>
   );
 };

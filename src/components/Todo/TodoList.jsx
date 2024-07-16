@@ -1,5 +1,5 @@
 const TodoList = (props) => {
-  const { data, setData } = props;
+  const { data } = props;
   return (
     <>
       <div className="task-list">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const TodoNew = (props) => {
-  const [inputValue, setInputValue] = useState("Enter task");
+  const [inputValue, setInputValue] = useState("");
 
   const { AddNewData } = props;
   const handleOnChange = (name) => {
@@ -12,7 +12,8 @@ const TodoNew = (props) => {
       <input
         className="type-input"
         type="text"
-        placeholder={inputValue}
+        placeholder="Enter task"
+        value={inputValue}
         onChange={(event) => handleOnChange(event.target.value)}
       />
       <button className="add-btn" onClick={() => AddNewData(inputValue)}>

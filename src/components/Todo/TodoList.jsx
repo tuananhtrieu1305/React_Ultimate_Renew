@@ -3,39 +3,21 @@ const TodoList = (props) => {
   return (
     <>
       <div className="task-list">
-        <div className="task-item">
-          <p className="task-name">{JSON.stringify(data)}</p>
-          <div className="icons">
-            <div className="delete-icon icon">
-              <ion-icon name="trash-outline"></ion-icon>
+        {data.map((item, index) => {
+          return (
+            <div className="task-item">
+              <p className="task-name">{item.task}</p>
+              <div className="icons">
+                <div className="delete-icon icon">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </div>
+                <div className="update-icon icon">
+                  <ion-icon name="clipboard-outline"></ion-icon>
+                </div>
+              </div>
             </div>
-            <div className="update-icon icon">
-              <ion-icon name="clipboard-outline"></ion-icon>
-            </div>
-          </div>
-        </div>
-        <div className="task-item">
-          <p className="task-name">watching youtube</p>
-          <div className="icons">
-            <div className="delete-icon icon">
-              <ion-icon name="trash-outline"></ion-icon>
-            </div>
-            <div className="update-icon icon">
-              <ion-icon name="clipboard-outline"></ion-icon>
-            </div>
-          </div>
-        </div>
-        <div className="task-item">
-          <p className="task-name">learning English</p>
-          <div className="icons">
-            <div className="delete-icon icon">
-              <ion-icon name="trash-outline"></ion-icon>
-            </div>
-            <div className="update-icon icon">
-              <ion-icon name="clipboard-outline"></ion-icon>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
       <button className="delete-btn">Delete all</button>
     </>

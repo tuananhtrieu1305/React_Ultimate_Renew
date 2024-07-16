@@ -6,8 +6,8 @@ import TodoNew from "./components/Todo/TodoNew";
 
 const App = () => {
   const [data, setData] = useState([
-    { id: 1, task: "Watching YT" },
-    { id: 2, task: "Learning English" },
+    // { id: 1, task: "Watching YT" },
+    // { id: 2, task: "Learning English" },
   ]);
 
   const randomNumb = (min, max) => {

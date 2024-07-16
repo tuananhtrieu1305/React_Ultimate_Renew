@@ -3,9 +3,9 @@ const TodoList = (props) => {
   return (
     <>
       <div className="task-list">
-        {data.map((item, index) => {
+        {data.map((item) => {
           return (
-            <div className="task-item">
+            <div className="task-item" key={item.id}>
               <p className="task-name">{item.task}</p>
               <div className="icons">
                 <div className="delete-icon icon">

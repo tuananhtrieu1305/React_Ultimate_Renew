@@ -1,4 +1,4 @@
-// import LostImage from "../src/assets/react.svg";
+import LostImage from "../src/assets/react.svg";
 import { useState } from "react";
 import "./components/Todo/todo.css";
 import TodoList from "./components/Todo/TodoList";
@@ -25,10 +25,13 @@ const App = () => {
     <div className="wrapper">
       <h1 className="heading">Todo List</h1>
       <TodoNew AddNewData={AddNewData} />
-      {/* <figure>
-        <img src={LostImage} alt="" />
-      </figure> */}
-      <TodoList data={data} />
+      {data.length > 0 ? (
+        <TodoList data={data} />
+      ) : (
+        <figure>
+          <img src={LostImage} alt="" />
+        </figure>
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import TodoList from "./components/Todo/TodoList";
 import TodoNew from "./components/Todo/TodoNew";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   const [data, setData] = useState([
@@ -50,6 +51,7 @@ const App = () => {
           </figure>
         )}
       </div>
+      <Outlet />
       <Footer />
     </>
   );

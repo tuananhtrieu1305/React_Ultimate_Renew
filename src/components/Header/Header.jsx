@@ -1,5 +1,6 @@
 import "./header.css";
 import Logo from "../../assets/react.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,15 +9,15 @@ const Header = () => {
         <img src={Logo} alt="" />
       </li>
       <li>
-        <a className="active" href="/">
+        <Link to="/" className="active">
           Home
-        </a>
+        </Link>
       </li>
       <li>
-        <a href="/users">Users</a>
+        <Link to="/users">Users</Link>
       </li>
       <li>
-        <a href="/product">Product</a>
+        <Link to="/product">Product</Link>
       </li>
     </ul>
   );

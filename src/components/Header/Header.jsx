@@ -1,23 +1,23 @@
 import "./header.css";
 import Logo from "../../assets/react.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <ul>
       <li className="logo">
-        <img src={Logo} alt="" />
-      </li>
-      <li>
-        <Link to="/" className="active">
-          Home
+        <Link to="/" className="logo-link">
+          <img src={Logo} alt="" />
         </Link>
       </li>
       <li>
-        <Link to="/users">Users</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/product">Product</Link>
+        <NavLink to="/users">Users</NavLink>
+      </li>
+      <li>
+        <NavLink to="/product">Product</NavLink>
       </li>
     </ul>
   );

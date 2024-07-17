@@ -1,5 +1,5 @@
 const TodoList = (props) => {
-  const { data, handleDeleteData } = props;
+  const { data, handleDeleteData, handleClickDeleteAll } = props;
 
   const handleClickDeleteBtn = (id) => {
     handleDeleteData(id);
@@ -27,7 +27,9 @@ const TodoList = (props) => {
           );
         })}
       </div>
-      <button className="delete-btn">Delete all</button>
+      <button className="delete-btn" onClick={handleClickDeleteAll}>
+        Delete all
+      </button>
     </>
   );
 };

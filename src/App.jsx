@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./components/Todo/todo.css";
 import TodoList from "./components/Todo/TodoList";
 import TodoNew from "./components/Todo/TodoNew";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const [data, setData] = useState([
@@ -26,19 +28,30 @@ const App = () => {
     const todoList = data.filter((item) => item.id !== id);
     setData(todoList);
   };
+  const handleClickDeleteAll = () => {
+    setData([]);
+  };
 
   return (
-    <div className="wrapper">
-      <h1 className="heading">Todo List</h1>
-      <TodoNew AddNewData={AddNewData} />
-      {data.length > 0 ? (
-        <TodoList data={data} handleDeleteData={handleDeleteData} />
-      ) : (
-        <figure>
-          <img src={LostImage} alt="" />
-        </figure>
-      )}
-    </div>
+    <>
+      <Header />
+      <div className="wrapper">
+        <h1 className="heading">Todo List</h1>
+        <TodoNew AddNewData={AddNewData} />
+        {data.length > 0 ? (
+          <TodoList
+            data={data}
+            handleDeleteData={handleDeleteData}
+            handleClickDeleteAll={handleClickDeleteAll}
+          />
+        ) : (
+          <figure>
+            <img src={LostImage} alt="" />
+          </figure>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 

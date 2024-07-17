@@ -6,6 +6,7 @@ const UsersPage = () => {
         alignItems: "center",
         justifyContent: "center",
         color: "#fff",
+        marginTop: "80px",
       }}
     >
       UsersPage

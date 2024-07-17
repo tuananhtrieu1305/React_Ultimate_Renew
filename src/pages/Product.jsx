@@ -5,6 +5,7 @@ const ProductPage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        marginTop: "80px",
         color: "#fff",
       }}
     >

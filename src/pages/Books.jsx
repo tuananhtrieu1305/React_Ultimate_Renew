@@ -1,4 +1,4 @@
-const ProductPage = () => {
+const BooksPage = () => {
   return (
     <div
       style={{
@@ -9,9 +9,9 @@ const ProductPage = () => {
         color: "#fff",
       }}
     >
-      ProductPage
+      BooksPage
     </div>
   );
 };
 
-export default ProductPage;
+export default BooksPage;

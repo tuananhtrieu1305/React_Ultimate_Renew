@@ -15,12 +15,18 @@ const UserForm = () => {
         message: "Success",
         description: "Create new user",
       });
+
+      console.log(res.data);
+      setFullName("");
+      setEmail("");
+      setPassword("");
+      setPhone("");
+    } else {
+      notification.error({
+        message: "Error",
+        description: JSON.stringify(res.message),
+      });
     }
-    console.log(res.data);
-    setFullName("");
-    setEmail("");
-    setPassword("");
-    setPhone("");
   };
 
   return (

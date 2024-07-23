@@ -1,0 +1,84 @@
+.user-side {
+  font-family: "Poppins", sans-serif;
+  padding: 40px 100px;
+}
+.user-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  padding: 0 300px;
+  margin-bottom: 20px;
+}
+.user-input {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px 0;
+}
+.user-input input,
+:where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #fff;
+  border-width: 3px;
+  font-size: 18px;
+}
+.user-input input::placeholder,
+.user-input :where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined,
+.user-input
+  :where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper
+  .anticon.ant-input-password-icon:hover,
+.user-input
+  :where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper
+  .anticon.ant-input-password-icon {
+  color: #fff;
+}
+:where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined:focus,
+:where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined:focus-within,
+.user-input input:hover,
+:where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined,
+:where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined:hover {
+  background-color: transparent;
+}
+.user-form button {
+  max-width: 200px;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  height: 50px;
+  line-height: 1;
+}
+.user-table .ant-table {
+  background-color: #666;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+:where(.css-dev-only-do-not-override-zg0ahe).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-zg0ahe).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td {
+  background-color: #666;
+  color: #fff;
+}
+.user-table .ant-table-cell-row-hover {
+  background-color: #555 !important;
+}
+.user-table .ant-table-cell a {
+  color: #fff;
+}
+.user-table .ant-pagination-item-link span {
+  color: #fff;
+}
+.user-table .ant-pagination-item-active {
+  border: none;
+}
+.user-table li a:hover:not(.active) {
+  background-color: transparent;
+}

@@ -28,7 +28,7 @@ const UsersPage = () => {
         }}
       >
         <UserForm loadingData={loadingData} />
-        <UserTable dataUsers={dataUsers} />
+        <UserTable dataUsers={dataUsers} loadingData={loadingData} />
       </div>
     </>
   );

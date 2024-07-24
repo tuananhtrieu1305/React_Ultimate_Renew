@@ -4,7 +4,7 @@ import UserModalUpdate from "./user.modal.update";
 import { useState } from "react";
 
 const UserTable = (props) => {
-  const { dataUsers } = props;
+  const { dataUsers, loadingData } = props;
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
 
@@ -56,6 +56,7 @@ const UserTable = (props) => {
         setIsModalOpen={setIsModalUpdateOpen}
         dataUpdate={dataUpdate}
         setDataUpdate={setDataUpdate}
+        loadingData={loadingData}
       />
     </>
   );

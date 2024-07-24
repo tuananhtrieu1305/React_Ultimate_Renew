@@ -1,6 +1,6 @@
 import { Input, notification, Modal } from "antd";
 import { useEffect, useState } from "react";
-import { createUserApi } from "../../services/api.service";
+import { updateUserApi } from "../../services/api.service";
 
 const UserModalUpdate = (props) => {
   const {
@@ -24,20 +24,20 @@ const UserModalUpdate = (props) => {
   }, [dataUpdate]);
 
   const handleClickSubmitBtn = async () => {
-    // const res = await createUserApi(fullName, email, password, phone);
-    // if (res.data) {
-    //   notification.success({
-    //     message: "Success",
-    //     description: "Create new user",
-    //   });
-    //   closeAndClearData();
-    //   await loadingData();
-    // } else {
-    //   notification.error({
-    //     message: "Error",
-    //     description: JSON.stringify(res.message),
-    //   });
-    // }
+    const res = await updateUserApi(id, fullName, phone);
+    if (res.data) {
+      notification.success({
+        message: "Success",
+        description: "Update a user",
+      });
+      closeAndClearData();
+      await loadingData();
+    } else {
+      notification.error({
+        message: "Error",
+        description: JSON.stringify(res.message),
+      });
+    }
   };
   const closeAndClearData = () => {
     setFullName("");

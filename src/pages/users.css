@@ -6,14 +6,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 40px;
-  padding: 0 300px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .user-input {
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 20px 0;
+}
+.user-input label {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-size: 16px;
 }
 .user-input input,
 :where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined {
@@ -93,4 +97,41 @@
   .ant-pagination-item-active
   a {
   color: #1677ff;
+}
+.user-side-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.user-side-top span {
+  font-size: 30px;
+}
+.create-user-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 2px solid #fff;
+  color: #555;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s linear;
+}
+.create-user-btn:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.ant-modal-content {
+  background-color: #666 !important;
+}
+.ant-modal-header {
+  background-color: transparent !important;
+}
+:where(.css-dev-only-do-not-override-zg0ahe).ant-modal .ant-modal-title {
+  color: #fff;
+}
+.ant-modal-close {
+  color: #fff !important;
 }

@@ -4,20 +4,18 @@ import "./users.css";
 
 const UsersPage = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        color: "#fff",
-        marginTop: "80px",
-        flexDirection: "column",
-      }}
-    >
-      UsersPage
-      <div className="user-side">
+    <>
+      <div
+        className="user-side"
+        style={{
+          color: "#fff",
+          marginTop: "100px",
+        }}
+      >
         <UserForm />
         <UserTable />
       </div>
-    </div>
+    </>
   );
 };
 

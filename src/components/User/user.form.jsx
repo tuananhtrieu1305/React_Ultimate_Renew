@@ -1,4 +1,4 @@
-import { Input, Button, notification } from "antd";
+import { Input, Button, notification, Modal } from "antd";
 import { useState } from "react";
 import { createUserApi } from "../../services/api.service";
 
@@ -7,6 +7,7 @@ const UserForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClickSubmitBtn = async () => {
     const res = await createUserApi(fullName, email, password, phone);
@@ -21,6 +22,7 @@ const UserForm = () => {
       setEmail("");
       setPassword("");
       setPhone("");
+      setIsModalOpen(false);
     } else {
       notification.error({
         message: "Error",
@@ -30,59 +32,78 @@ const UserForm = () => {
   };
 
   return (
-    <div className="user-form">
-      <div className="user-input">
-        <label>Full Name:</label>
-        <Input
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              handleClickSubmitBtn();
-            }
-          }}
-        />
+    <>
+      <div className="user-side-top">
+        <span>Table Users</span>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="create-user-btn"
+        >
+          Create User
+        </button>
       </div>
-      <div className="user-input">
-        <label>Email:</label>
-        <Input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              handleClickSubmitBtn();
-            }
-          }}
-        />
-      </div>
-      <div className="user-input">
-        <label>Password:</label>
-        <Input.Password
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              handleClickSubmitBtn();
-            }
-          }}
-        />
-      </div>
-      <div className="user-input">
-        <label>Phone:</label>
-        <Input
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              handleClickSubmitBtn();
-            }
-          }}
-        />
-      </div>
-      <Button type="primary" onClick={handleClickSubmitBtn}>
-        Submit
-      </Button>
-    </div>
+
+      <Modal
+        title="Create User"
+        open={isModalOpen}
+        onOk={handleClickSubmitBtn}
+        onCancel={() => setIsModalOpen(false)}
+        maskClosable={false}
+        okText={"Create"}
+        width={"1000px"}
+      >
+        <div className="user-form">
+          <div className="user-input">
+            <label>Full Name:</label>
+            <Input
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleClickSubmitBtn();
+                }
+              }}
+            />
+          </div>
+          <div className="user-input">
+            <label>Email:</label>
+            <Input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleClickSubmitBtn();
+                }
+              }}
+            />
+          </div>
+          <div className="user-input">
+            <label>Password:</label>
+            <Input.Password
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleClickSubmitBtn();
+                }
+              }}
+            />
+          </div>
+          <div className="user-input">
+            <label>Phone:</label>
+            <Input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleClickSubmitBtn();
+                }
+              }}
+            />
+          </div>
+        </div>
+      </Modal>
+    </>
   );
 };
 

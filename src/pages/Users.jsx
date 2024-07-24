@@ -1,8 +1,21 @@
 import UserForm from "../components/User/user.form";
 import UserTable from "../components/User/user.table";
+import { fetchAllUsersApi } from "../services/api.service";
+import { useEffect, useState } from "react";
 import "./users.css";
 
 const UsersPage = () => {
+  const [dataUsers, setDataUsers] = useState([]);
+
+  useEffect(() => {
+    loadingData();
+  }, []);
+
+  const loadingData = async () => {
+    const res = await fetchAllUsersApi();
+    setDataUsers(res.data);
+  };
+
   return (
     <>
       <div
@@ -12,8 +25,8 @@ const UsersPage = () => {
           marginTop: "100px",
         }}
       >
-        <UserForm />
-        <UserTable />
+        <UserForm loadingData={loadingData} />
+        <UserTable dataUsers={dataUsers} />
       </div>
     </>
   );

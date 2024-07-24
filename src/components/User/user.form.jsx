@@ -1,8 +1,10 @@
-import { Input, Button, notification, Modal } from "antd";
+import { Input, notification, Modal } from "antd";
 import { useState } from "react";
 import { createUserApi } from "../../services/api.service";
 
-const UserForm = () => {
+const UserForm = (props) => {
+  const { loadingData } = props;
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,19 +18,21 @@ const UserForm = () => {
         message: "Success",
         description: "Create new user",
       });
-
-      console.log(res.data);
-      setFullName("");
-      setEmail("");
-      setPassword("");
-      setPhone("");
-      setIsModalOpen(false);
+      closeAndClearData();
+      await loadingData();
     } else {
       notification.error({
         message: "Error",
         description: JSON.stringify(res.message),
       });
     }
+  };
+  const closeAndClearData = () => {
+    setFullName("");
+    setEmail("");
+    setPassword("");
+    setPhone("");
+    setIsModalOpen(false);
   };
 
   return (
@@ -47,7 +51,9 @@ const UserForm = () => {
         title="Create User"
         open={isModalOpen}
         onOk={handleClickSubmitBtn}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => {
+          closeAndClearData();
+        }}
         maskClosable={false}
         okText={"Create"}
         width={"1000px"}

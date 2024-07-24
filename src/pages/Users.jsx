@@ -23,6 +23,8 @@ const UsersPage = () => {
         style={{
           color: "#fff",
           marginTop: "100px",
+          position: "fixed",
+          inset: "0",
         }}
       >
         <UserForm loadingData={loadingData} />

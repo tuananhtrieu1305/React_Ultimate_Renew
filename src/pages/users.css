@@ -135,3 +135,16 @@
 .ant-modal-close {
   color: #fff !important;
 }
+.table-action-btn-group {
+  display: flex;
+  align-items: flex-end;
+  gap: 0 20px;
+}
+.table-action-btn-group span {
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.table-action-btn-group span:hover {
+  opacity: 0.8;
+}

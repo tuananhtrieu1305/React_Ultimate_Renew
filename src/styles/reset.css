@@ -1,6 +1,17 @@
 body {
   background-color: #444;
 }
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(105, 103, 103, 0.8);
+  border-radius: 20px;
+  border: transparent;
+}
 html,
 body,
 div,

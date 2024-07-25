@@ -148,3 +148,26 @@
 .table-action-btn-group span:hover {
   opacity: 0.8;
 }
+.user-table-id-text:hover {
+  color: #2cccff !important;
+  transition: all 0.2s linear;
+}
+.user-table-drawer .ant-drawer-title {
+  font-size: 20px;
+}
+.user-table-drawer .ant-drawer-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Poppins", sans-serif;
+  gap: 10px 0;
+  font-size: 16px;
+}
+.user-table-drawer .ant-drawer-body p strong {
+  font-weight: 600;
+  font-size: 20px;
+}
+.table-user-id:hover {
+  color: #2cccff !important;
+  transition: all 0.2s linear;
+}

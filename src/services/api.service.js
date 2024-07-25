@@ -16,8 +16,26 @@ export const updateUserApi = (_id, fullName, phone) => {
   const data = { _id, fullName, phone };
   return axios.put(URL_BACKEND, data);
 };
+export const updateUserAvatarApi = (_id, fullName, phone, avatar) => {
+  const URL_BACKEND = "/api/v1/user";
+  const data = { _id, fullName, phone, avatar };
+  return axios.put(URL_BACKEND, data);
+};
 
 export const deleteUserApi = (_id) => {
   const URL_BACKEND = `/api/v1/user/${_id}`;
   return axios.delete(URL_BACKEND);
+};
+
+export const handleUploadImg = (file, folder) => {
+  const URL_BACKEND = "/api/v1/file/upload";
+  let config = {
+    headers: {
+      "upload-type": folder,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+  const bodyFormData = new FormData();
+  bodyFormData.append("fileImg", file);
+  return axios.post(URL_BACKEND, bodyFormData, config);
 };

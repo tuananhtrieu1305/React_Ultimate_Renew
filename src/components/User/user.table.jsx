@@ -1,4 +1,4 @@
-import { Table, Drawer, message, Popconfirm } from "antd";
+import { Table, Drawer, message, Popconfirm, notification } from "antd";
 import {
   EditOutlined,
   DeleteOutlined,
@@ -6,7 +6,11 @@ import {
 } from "@ant-design/icons";
 import UserModalUpdate from "./user.modal.update";
 import { useEffect, useState } from "react";
-import { deleteUserApi } from "../../services/api.service";
+import {
+  deleteUserApi,
+  handleUploadImg,
+  updateUserAvatarApi,
+} from "../../services/api.service";
 
 const UserTable = (props) => {
   const { dataUsers, loadingData } = props;
@@ -98,6 +102,37 @@ const UserTable = (props) => {
     },
   ];
 
+  const handleUpdateUserAvatar = async () => {
+    const resUpload = await handleUploadImg(selectedFile, "avatar");
+    console.log(resUpload);
+    if (resUpload.data) {
+      const newAvatar = resUpload.data.fileUploaded;
+      const resUpdate = await updateUserAvatarApi(
+        dataDrawer._id,
+        dataDrawer.fullName,
+        dataDrawer.phone,
+        newAvatar
+      );
+      if (resUpdate.data) {
+        setIsDrawerOpen(false);
+        setSelectedFile(null);
+        setPreview(null);
+        await loadingData();
+        message.success("Updated!");
+      } else {
+        notification.error({
+          message: "Error",
+          description: "Something wrong!",
+        });
+      }
+    } else {
+      notification.error({
+        message: "Error",
+        description: JSON.stringify(resUpload.message),
+      });
+    }
+  };
+
   return (
     <>
       <Table
@@ -165,7 +200,7 @@ const UserTable = (props) => {
             </figure>
             <div className="button-wrap">
               <button onClick={() => setPreview(null)}>Discard</button>
-              <button>Confirm</button>
+              <button onClick={() => handleUpdateUserAvatar()}>Confirm</button>
             </div>
           </div>
         )}

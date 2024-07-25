@@ -1,5 +1,9 @@
 import { Table, Drawer, message, Popconfirm } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  CloudUploadOutlined,
+} from "@ant-design/icons";
 import UserModalUpdate from "./user.modal.update";
 import { useState } from "react";
 import { deleteUserApi } from "../../services/api.service";
@@ -101,6 +105,14 @@ const UserTable = (props) => {
         open={isDrawerOpen}
         className="user-table-drawer"
       >
+        <figure className="user-table-avatar">
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${
+              dataDrawer.avatar
+            }`}
+            alt={`${dataDrawer.fullName}'s avatar`}
+          />
+        </figure>
         <p>
           <strong>ID</strong> : {dataDrawer._id}
         </p>
@@ -116,6 +128,13 @@ const UserTable = (props) => {
         <p>
           <strong>ROLE</strong> : {dataDrawer.role}
         </p>
+        <div className="avatar-upload">
+          <label htmlFor="userAvatarUpload">
+            <CloudUploadOutlined />
+            Change avatar
+          </label>
+          <input type="file" id="userAvatarUpload" hidden />
+        </div>
       </Drawer>
     </>
   );

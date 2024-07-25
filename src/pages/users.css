@@ -171,15 +171,23 @@
   color: #2cccff !important;
   transition: all 0.2s linear;
 }
-.user-table-avatar {
+.user-table-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.user-table-avatar,
+.user-table-preview figure {
   width: 200px;
   height: 200px;
   border-radius: 100rem;
   border: 2px solid #333;
   align-self: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.user-table-avatar img {
+.user-table-avatar img,
+.user-table-preview figure img {
   width: 100%;
   border-radius: 100rem;
   height: 100%;
@@ -200,7 +208,26 @@
   cursor: pointer;
   transition: all 0.2s linear;
 }
-.avatar-upload label:hover {
+.avatar-upload label:hover,
+.user-table-preview .button-wrap button:hover {
   background-color: #333;
   color: #fff;
+}
+.user-table-preview .button-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+}
+.user-table-preview .button-wrap button {
+  font-family: "Poppins", sans-serif;
+  padding: 12px 20px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10px;
+  cursor: pointer;
+  transition: all 0.2s linear;
 }

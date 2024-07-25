@@ -5,7 +5,7 @@ import {
   CloudUploadOutlined,
 } from "@ant-design/icons";
 import UserModalUpdate from "./user.modal.update";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteUserApi } from "../../services/api.service";
 
 const UserTable = (props) => {
@@ -15,6 +15,20 @@ const UserTable = (props) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [dataDrawer, setDataDrawer] = useState({});
   const [dataDeleteUser, setDataDeleteUser] = useState({});
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(null);
+      setPreview(null);
+      return;
+    }
+    const file = e.target.files[0];
+    setSelectedFile(file);
+    setPreview(URL.createObjectURL(file));
+  };
 
   const confirm = async () => {
     const res = await deleteUserApi(dataDeleteUser._id);
@@ -101,7 +115,10 @@ const UserTable = (props) => {
       />
       <Drawer
         title={`Full information of ${dataDrawer.fullName}`}
-        onClose={() => setIsDrawerOpen(false)}
+        onClose={() => {
+          setIsDrawerOpen(false);
+          setPreview(null);
+        }}
         open={isDrawerOpen}
         className="user-table-drawer"
       >
@@ -128,13 +145,30 @@ const UserTable = (props) => {
         <p>
           <strong>ROLE</strong> : {dataDrawer.role}
         </p>
-        <div className="avatar-upload">
-          <label htmlFor="userAvatarUpload">
-            <CloudUploadOutlined />
-            Change avatar
-          </label>
-          <input type="file" id="userAvatarUpload" hidden />
-        </div>
+        {!preview ? (
+          <div className="avatar-upload">
+            <label htmlFor="userAvatarUpload">
+              <CloudUploadOutlined />
+              Change avatar
+            </label>
+            <input
+              type="file"
+              id="userAvatarUpload"
+              hidden
+              onChange={onSelectFile}
+            />
+          </div>
+        ) : (
+          <div className="user-table-preview">
+            <figure>
+              <img src={preview} alt="" />
+            </figure>
+            <div className="button-wrap">
+              <button onClick={() => setPreview(null)}>Discard</button>
+              <button>Confirm</button>
+            </div>
+          </div>
+        )}
       </Drawer>
     </>
   );

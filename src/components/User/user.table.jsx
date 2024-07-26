@@ -13,7 +13,8 @@ import {
 } from "../../services/api.service";
 
 const UserTable = (props) => {
-  const { dataUsers, loadingData } = props;
+  const { dataUsers, loadingData, current, pageSize, total, setCurrent } =
+    props;
   const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -45,6 +46,10 @@ const UserTable = (props) => {
   };
 
   const columns = [
+    {
+      title: "NO",
+      render: (_, record, index) => <>{index + 1 + (current - 1) * pageSize}</>,
+    },
     {
       title: "ID",
       dataIndex: "_id",
@@ -133,6 +138,12 @@ const UserTable = (props) => {
     }
   };
 
+  const onChangePagination = (page) => {
+    if (page && page.current && +page.current !== +current) {
+      setCurrent(page.current);
+    }
+  };
+
   return (
     <>
       <Table
@@ -140,6 +151,11 @@ const UserTable = (props) => {
         columns={columns}
         dataSource={dataUsers}
         className="user-table"
+        pagination={{
+          current: current,
+          total: total,
+        }}
+        onChange={onChangePagination}
       />
       <UserModalUpdate
         isModalOpen={isModalUpdateOpen}

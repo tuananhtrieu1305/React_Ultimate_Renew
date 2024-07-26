@@ -6,14 +6,22 @@ import "./users.css";
 
 const UsersPage = () => {
   const [dataUsers, setDataUsers] = useState([]);
+  const [current, setCurrent] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     loadingData();
-  }, []);
+  }, [current]);
 
   const loadingData = async () => {
-    const res = await fetchAllUsersApi();
-    setDataUsers(res.data);
+    const res = await fetchAllUsersApi(current, pageSize);
+    if (res.data) {
+      setDataUsers(res.data.result);
+      setCurrent(res.data.meta.current);
+      setPageSize(res.data.meta.pageSize);
+      setTotal(res.data.meta.total);
+    }
   };
 
   return (
@@ -28,7 +36,14 @@ const UsersPage = () => {
         }}
       >
         <UserForm loadingData={loadingData} />
-        <UserTable dataUsers={dataUsers} loadingData={loadingData} />
+        <UserTable
+          dataUsers={dataUsers}
+          loadingData={loadingData}
+          current={current}
+          pageSize={pageSize}
+          total={total}
+          setCurrent={setCurrent}
+        />
       </div>
     </>
   );

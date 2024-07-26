@@ -20,7 +20,7 @@
   font-size: 16px;
 }
 .user-input input,
-:where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined {
+.user-input :where(.css-dev-only-do-not-override-zg0ahe).ant-input-outlined {
   padding: 10px 20px;
   background-color: transparent;
   color: #fff;

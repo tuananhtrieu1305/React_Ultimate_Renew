@@ -12,6 +12,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     loadingData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
 
   const loadingData = async () => {

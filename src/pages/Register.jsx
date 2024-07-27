@@ -1,13 +1,32 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input, notification } from "antd";
+import { registerUserApi } from "../services/api.service";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinish = async (values) => {
+    const res = await registerUserApi(
+      values.fullName,
+      values.email,
+      values.password,
+      values.phone
+    );
+    console.log(res);
+    console.log(values);
+    if (res.data) {
+      notification.success({
+        message: "Success",
+        description: "You now have an account !",
+      });
+      navigate("/login");
+    } else {
+      notification.error({
+        message: "Error",
+        description: "Something wrong, try again !",
+      });
+    }
   };
 
   return (
@@ -51,23 +70,58 @@ const RegisterPage = () => {
         >
           Join with us !
         </span>
-        <Form
-          name="basic"
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          layout="vertical"
-          form={form}
-        >
-          <Form.Item label="Full Name" name="fullName">
+        <Form name="basic" onFinish={onFinish} layout="vertical" form={form}>
+          <Form.Item
+            label="Full Name"
+            name="fullName"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your name!",
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="Password" name="password">
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your password!",
+              },
+            ]}
+          >
             <Input.Password />
           </Form.Item>
-          <Form.Item label="Email" name="email">
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your email!",
+              },
+              {
+                type: "email",
+                message: "The input is not valid E-mail!",
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="Phone Number" name="phone">
+          <Form.Item
+            label="Phone Number"
+            name="phone"
+            rules={[
+              {
+                required: true,
+                pattern: new RegExp(/\d+/g),
+                message: "Wrong format!",
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
           <Button
@@ -79,7 +133,6 @@ const RegisterPage = () => {
               left: "50%",
               transform: "translateX(-50%)",
             }}
-            onClick={() => form.submit()}
           >
             Submit
           </Button>

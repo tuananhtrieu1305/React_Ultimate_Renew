@@ -15,9 +15,10 @@ const LoginPage = () => {
   const onFinish = async (values) => {
     setLoading(true);
     const res = await LoginUserApi(values.username, values.password);
+    console.log(res);
     if (res.data) {
       message.success(`Welcome back ${values.username}`);
-      localStorage.getItem("access_token", res.data.access_token);
+      localStorage.setItem("access_token", res.data.access_token);
       setUser(res.data.user);
       navigate("/");
     } else {

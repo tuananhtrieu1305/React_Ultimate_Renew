@@ -1,6 +1,6 @@
 import { Button, Form, Input, notification } from "antd";
 import { registerUserApi } from "../services/api.service";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [form] = Form.useForm();
@@ -13,8 +13,6 @@ const RegisterPage = () => {
       values.password,
       values.phone
     );
-    console.log(res);
-    console.log(values);
     if (res.data) {
       notification.success({
         message: "Success",
@@ -45,7 +43,7 @@ const RegisterPage = () => {
         style={{
           border: "3px solid #000",
           width: "800px",
-          padding: "100px",
+          padding: "50px 100px",
           borderRadius: "16px",
           backgroundColor: "#fff",
         }}
@@ -137,6 +135,12 @@ const RegisterPage = () => {
             Submit
           </Button>
         </Form>
+        <p style={{ marginTop: "20px" }}>
+          Already have an account?{" "}
+          <NavLink style={{ fontSize: "18px" }} to="/login">
+            Login now
+          </NavLink>
+        </p>
       </div>
     </div>
   );

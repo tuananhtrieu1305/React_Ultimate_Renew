@@ -44,3 +44,8 @@ export const registerUserApi = (fullName, email, password, phone) => {
   const data = { fullName, email, password, phone };
   return axios.post(URL_BACKEND, data);
 };
+export const LoginUserApi = (username, password) => {
+  const URL_BACKEND = "api/v1/auth/login";
+  const data = { username, password, delay: 5000 };
+  return axios.post(URL_BACKEND, data);
+};

@@ -49,6 +49,10 @@ export const LoginUserApi = (username, password) => {
   const data = { username, password, delay: 5000 };
   return axios.post(URL_BACKEND, data);
 };
+export const LogoutUserApi = () => {
+  const URL_BACKEND = "api/v1/auth/logout";
+  return axios.post(URL_BACKEND);
+};
 export const GetAccountApi = () => {
   const URL_BACKEND = "api/v1/auth/account";
   return axios.get(URL_BACKEND);

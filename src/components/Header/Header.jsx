@@ -3,9 +3,30 @@ import Logo from "../../assets/react.svg";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { LogoutUserApi } from "../../services/api.service";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    const res = await LogoutUserApi();
+    if (res && res.data) {
+      localStorage.removeItem("access_token");
+      setUser({
+        email: "",
+        phone: "",
+        fullName: "",
+        role: "",
+        avatar: "",
+        id: "",
+      });
+      message.success("Logout success!");
+      navigate("/");
+    }
+  };
 
   return (
     <ul className="header-ul">
@@ -25,7 +46,10 @@ const Header = () => {
       </li>
       {user && user.id ? (
         <>
-          <li style={{ float: "right", marginRight: "20px" }}>
+          <li
+            style={{ float: "right", marginRight: "20px" }}
+            onClick={() => handleLogout()}
+          >
             <a href="#">Log out</a>
           </li>
           <span

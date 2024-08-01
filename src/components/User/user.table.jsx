@@ -5,7 +5,7 @@ import {
   CloudUploadOutlined,
 } from "@ant-design/icons";
 import UserModalUpdate from "./user.modal.update";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   deleteUserApi,
   handleUploadImg,
@@ -109,7 +109,6 @@ const UserTable = (props) => {
 
   const handleUpdateUserAvatar = async () => {
     const resUpload = await handleUploadImg(selectedFile, "avatar");
-    console.log(resUpload);
     if (resUpload.data) {
       const newAvatar = resUpload.data.fileUploaded;
       const resUpdate = await updateUserAvatarApi(

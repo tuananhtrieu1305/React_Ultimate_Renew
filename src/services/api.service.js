@@ -5,6 +5,18 @@ export const createUserApi = (fullName, email, password, phone) => {
   const data = { fullName, email, password, phone };
   return axios.post(URL_BACKEND, data);
 };
+export const createBookApi = (
+  thumbnail,
+  mainText,
+  author,
+  price,
+  quantity,
+  category
+) => {
+  const URL_BACKEND = "/api/v1/book";
+  const data = { thumbnail, mainText, author, price, quantity, category };
+  return axios.post(URL_BACKEND, data);
+};
 
 export const fetchAllUsersApi = (current, pageSize) => {
   const URL_BACKEND = `/api/v1/user?current=${current}&pageSize=${pageSize}`;
@@ -40,20 +52,41 @@ export const handleUploadImg = (file, folder) => {
   return axios.post(URL_BACKEND, bodyFormData, config);
 };
 export const registerUserApi = (fullName, email, password, phone) => {
-  const URL_BACKEND = "api/v1/user/register";
+  const URL_BACKEND = "/api/v1/user/register";
   const data = { fullName, email, password, phone };
   return axios.post(URL_BACKEND, data);
 };
 export const LoginUserApi = (username, password) => {
-  const URL_BACKEND = "api/v1/auth/login";
+  const URL_BACKEND = "/api/v1/auth/login";
   const data = { username, password, delay: 5000 };
   return axios.post(URL_BACKEND, data);
 };
 export const LogoutUserApi = () => {
-  const URL_BACKEND = "api/v1/auth/logout";
+  const URL_BACKEND = "/api/v1/auth/logout";
   return axios.post(URL_BACKEND);
 };
 export const GetAccountApi = () => {
-  const URL_BACKEND = "api/v1/auth/account";
+  const URL_BACKEND = "/api/v1/auth/account";
   return axios.get(URL_BACKEND);
+};
+export const fetchAllBooksApi = (current, pageSize) => {
+  const URL_BACKEND = `/api/v1/book?current=${current}&pageSize=${pageSize}`;
+  return axios.get(URL_BACKEND);
+};
+export const updateBookApi = (
+  _id,
+  thumbnail,
+  mainText,
+  author,
+  price,
+  quantity,
+  category
+) => {
+  const URL_BACKEND = "/api/v1/book";
+  const data = { _id, thumbnail, mainText, author, price, quantity, category };
+  return axios.put(URL_BACKEND, data);
+};
+export const deleteBookApi = (_id) => {
+  const URL_BACKEND = `/api/v1/book/${_id}`;
+  return axios.delete(URL_BACKEND);
 };
